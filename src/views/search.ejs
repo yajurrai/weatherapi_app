@@ -1,0 +1,68 @@
+<%- include('partials/header.ejs') %>
+	<div class="container mt-1">
+		<header class="bg-secondary d-flex mb-3 justify-content-between align-items-center rounded p-2">
+
+			<h1 class="m-0 display-4 text-white rounded">
+				<%= title %>
+			</h1>
+			<form action="/search" method="POST"> <!-- onsubmit="updateWeatherDataFromServer(); return false;" -->
+				<div class="form-group">
+					<input type="text" class="form-control" name="form_location" id="form_location" placeholder="Enter Location...">
+				</div>
+			</form>
+		</header>
+
+		<p id="myclientdata"></p>
+
+
+		<div class="card text-black mb-3">
+			<div class="card-header d-flex align-items-center flex-row-reverse justify-content-end bg-primary">
+				<h1 class="card-title m-0"><%= place %></h1>
+				<img src="<%= weatherIcon %>" class="img-thumbnail bg-primary p-0">
+			</div>
+
+
+
+			<div class="card-body text-center">
+				<div class="row p-2">
+
+					<div class="col-lg-6 col-md-12 col-sm-12">
+						<!--
+							<div class="mb-3">
+							<span class="badge bg-danger">Current Temperature: </span>
+							<span class="badge bg-warning">Humidity: </span>
+							<span class="badge bg-success">Wind Speed: </span>
+							<span class="badge bg-primary">Cloudy:</span>
+						</div>
+						 -->
+
+						<ul class="list-group p-2 mb-2">
+							<h3 class="text-dark">Temperature</h3>
+							<li class="list-group-item bg-info d-flex align-items-center justify-content-between
+							text-dark rounded border border-dark mb-1"><strong>Current Temperature:</strong> <%= temperature %></li>
+							<li class="list-group-item bg-success
+							text-dark rounded border border-dark mb-1 d-flex align-items-center justify-content-between"><strong>Min Temperature:</strong> <%= minTemp %></li>
+							<li class="list-group-item bg-danger
+							text-dark rounded border border-dark d-flex align-items-center justify-content-between"><strong>Max Temperature:</strong> <%= maxTemp %></li>
+						</ul>
+
+					</div>
+
+					<div class="col-lg-6 col-md-12 col-sm-12">
+						<ul class="list-group p-2">
+							<h3>Other Stuff</h3>
+							<li class="list-group-item bg-danger text-dark rounded border border-dark mb-1 d-flex align-items-center justify-content-between"><strong>Humidity:</strong> <%= humidity %></li>
+
+							<li class="list-group-item bg-success text-white rounded border border-dark mb-1 d-flex align-items-center justify-content-between"><strong>Wind Speed:</strong> <%= windspeed %></li>
+
+							<li class="list-group-item bg-info text-dark rounded border border-dark d-flex align-items-center justify-content-between"><strong>Cloudy: </strong> <%= cloudy %></li>
+						</ul>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+<%- include('partials/footer.ejs') %>

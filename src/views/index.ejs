@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+	<div class="container mt-1">
+		<header class="bg-secondary d-flex mb-3 justify-content-between align-items-center rounded p-2">
+
+			<h1 class="m-0 display-4 text-white rounded">
+				<%= title %>
+			</h1>
+			<form action="/search" method="POST"> <!-- onsubmit="updateWeatherDataFromServer(); return false;" -->
+				<div class="form-group">
+					<input type="text" class="form-control" name="form_location" id="form_location" placeholder="Enter Location...">
+				</div>
+			</form>
+		</header>
+
+    <div class="">
+      Search a Location to get it's weather info
+    </div>
+
+	</div>
+<%- include('partials/footer.ejs') %>
