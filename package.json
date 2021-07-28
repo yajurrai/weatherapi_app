@@ -4,7 +4,7 @@
   "description": "Weather app",
   "main": "app.js",
   "scripts": {
-    "start": "snowpack dev",
+    "start": "node app",
     "dev": "nodemon app"
   },
   "author": "Yajur Rai",

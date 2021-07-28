@@ -7,6 +7,15 @@
   margin-right: 0.6rem !important;
 }
 
+.card-header > h1 {
+  margin-right: 1.4rem !important;
+}
+
+p {
+  margin: 0 !important;
+  margin-top:  5px !important;
+}
+
 ul {
   height: 25rem !important;
 }
