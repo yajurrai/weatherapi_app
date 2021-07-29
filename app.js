@@ -31,16 +31,16 @@ let humidity;
 let windSpeed;
 let cloudy;
 let weatherIcon;
+let condition;
 
 
 // This function will fetch weather DATA for a place and return that data as json
-async function fetchData(place) {
+async function fetchAndSetData(place) {
   await axios({
     method: 'get',
     url: `https://api.weatherapi.com/v1/forecast.json?key=3070eb61182e45caa96162153212007&q=${place}&days=1&aqi=yes&alerts=yes`
   })
     .then((res) => {
-
       location = res.data.location.region;
       currentTemp = res.data.current.temp_c;
       humidity = res.data.current.humidity;
@@ -50,6 +50,7 @@ async function fetchData(place) {
       minTemp = res.data.forecast.forecastday[0].day.mintemp_c;
       maxTemp = res.data.forecast.forecastday[0].day.maxtemp_c;
       weatherIcon = res.data.current.condition.icon;
+      condition = res.data.current.condition.text;
     })
     .catch(err => console.log('Some error occured ' + err));
 }
@@ -57,18 +58,16 @@ async function fetchData(place) {
 
 
 app.get('/', async (req, res) => {
-
 	res.render('index', {
     title: 'Weather Explorer'
   });
-
 });
 
 
 
 app.post('/search', async (req, res) => {
   const search_location = req.body.form_location;
-  await fetchData(search_location);
+  await fetchAndSetData(search_location);
 
   res.render('search', {
     title: 'Weather Explorer',
@@ -79,7 +78,8 @@ app.post('/search', async (req, res) => {
     humidity: humidity + '%',
     windspeed: windSpeed + ' mp/h',
     cloudy: cloudy,
-    weatherIcon: weatherIcon
+    weatherIcon: weatherIcon,
+    condition: condition
   });
 });
 
